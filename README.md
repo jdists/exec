@@ -8,6 +8,18 @@ exec as jdists processor
 
 * @see [exec](https://nodejs.org/api/child_process.html#child_process_child_process_execfile_file_args_options_callback)
 
+## example
+
+```js
+/*<jdists encoding="exec">*/
+ls -l
+/*</jdists>*/
+```
+
+```js
+/*<exec>ls -l</exec>*/
+```
+
 ## License
 
 MIT © [zswang](http://weibo.com/zswang)

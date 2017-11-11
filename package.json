@@ -1,6 +1,6 @@
 {
   "name": "@jdists/exec",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "exec as jdists processor",
   "main": "lib/index",
   "typings": "lib/index.d.ts",

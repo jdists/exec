@@ -12,16 +12,13 @@ describe("src/index.ts", function () {
   
   
 
-  it("processor():base", function (done) {
+  it("processor():base", function () {
     examplejs_printLines = [];
   const path = require('path')
-  processor('pwd').then(function (reply) {
-    examplejs_print(path.basename(reply.trim()))
-    assert.equal(examplejs_printLines.join("\n"), "exec"); examplejs_printLines = [];
-    done();
-  }).catch(function (err) {
-    console.error(err)
-  })
+  examplejs_print(path.basename(processor('pwd').trim()))
+  assert.equal(examplejs_printLines.join("\n"), "exec"); examplejs_printLines = [];
+  examplejs_print(path.basename(processor('echo "汉字"').trim()))
+  assert.equal(examplejs_printLines.join("\n"), "汉字"); examplejs_printLines = [];
   });
           
   it("processor():content is null", function () {
@@ -30,14 +27,13 @@ describe("src/index.ts", function () {
   assert.equal(examplejs_printLines.join("\n"), "null"); examplejs_printLines = [];
   });
           
-  it("processor():error", function (done) {
+  it("processor():error", function () {
     examplejs_printLines = [];
-  processor('@none').then(function () {
-  }).catch(function (err) {
-    examplejs_print(!!err)
-    assert.equal(examplejs_printLines.join("\n"), "true"); examplejs_printLines = [];
-    done();
-  })
+
+  (function() {
+  examplejs_print(path.basename(processor('pwd')))
+  // * throw
+  }).should.throw();
   });
           
 });
